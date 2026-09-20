@@ -1,5 +1,10 @@
 # Cinderwake Scribe
 
+> **You are on the `cloud` branch** — the AWS-ready build (S3 storage, env-based
+> key, single-password login). It still runs locally exactly like `main`. To put
+> it on your domain, follow **[DEPLOY.md](DEPLOY.md)**. The `main` branch is the
+> original local-only app, unchanged.
+
 A local, canon-aware writing studio for **Book 1**. Your manuscript stays as plain
 Markdown files you own; the co-writer (Claude Opus) reads your full canon on every
 request so it never contradicts your own bible.

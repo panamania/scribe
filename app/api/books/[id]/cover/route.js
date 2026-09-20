@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import fs from "node:fs/promises";
 import path from "node:path";
+import { storage } from "../../../../../lib/storage.js";
 import { bookDir, readMeta, updateBook } from "../../../../../lib/books.js";
 
 export const dynamic = "force-dynamic";
@@ -17,19 +17,15 @@ export async function GET(_req, { params }) {
   const { id } = await params;
   const meta = await readMeta(id);
   if (!meta.cover) return new Response("no cover", { status: 404 });
-  try {
-    const file = path.join(bookDir(id), meta.cover);
-    const buf = await fs.readFile(file);
-    const ext = path.extname(meta.cover).toLowerCase();
-    return new Response(buf, {
-      headers: {
-        "Content-Type": MIME[ext] || "application/octet-stream",
-        "Cache-Control": "no-cache",
-      },
-    });
-  } catch {
-    return new Response("no cover", { status: 404 });
-  }
+  const buf = await storage.getBytes(`${bookDir(id)}/${meta.cover}`);
+  if (!buf) return new Response("no cover", { status: 404 });
+  const ext = path.extname(meta.cover).toLowerCase();
+  return new Response(buf, {
+    headers: {
+      "Content-Type": MIME[ext] || "application/octet-stream",
+      "Cache-Control": "no-cache",
+    },
+  });
 }
 
 export async function POST(req, { params }) {
@@ -44,11 +40,11 @@ export async function POST(req, { params }) {
   // Remove any previous cover with a different extension.
   const prev = (await readMeta(id)).cover;
   if (prev && prev !== `cover${ext}`) {
-    try { await fs.unlink(path.join(bookDir(id), prev)); } catch {}
+    await storage.del(`${bookDir(id)}/${prev}`);
   }
   const name = `cover${ext}`;
   const buf = Buffer.from(await file.arrayBuffer());
-  await fs.writeFile(path.join(bookDir(id), name), buf);
+  await storage.putBytes(`${bookDir(id)}/${name}`, buf, MIME[ext]);
   const book = await updateBook(id, { cover: name });
   return NextResponse.json({ book });
 }
@@ -57,7 +53,7 @@ export async function DELETE(_req, { params }) {
   const { id } = await params;
   const meta = await readMeta(id);
   if (meta.cover) {
-    try { await fs.unlink(path.join(bookDir(id), meta.cover)); } catch {}
+    await storage.del(`${bookDir(id)}/${meta.cover}`);
   }
   const book = await updateBook(id, { cover: null });
   return NextResponse.json({ book });
