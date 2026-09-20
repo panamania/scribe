@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { loadCanon } from "../../../../../lib/canon.js";
-import { anthropicOptions, effectiveModel } from "../../../../../lib/settings.js";
+import {
+  anthropicOptions,
+  effectiveModel,
+  cachedSystem,
+  cacheUsageLine,
+} from "../../../../../lib/settings.js";
 import { describeApiError } from "../../../../../lib/apierror.js";
 import { writeCanonLog } from "../../../../../lib/canonlog.js";
 import { getCheck, saveCheck } from "../../../../../lib/canonchecks.js";
@@ -81,9 +86,11 @@ Rules:
     const msg = await client.messages.create({
       model: await effectiveModel(),
       max_tokens: 2200,
-      system,
+      // Cache the (static) editor prompt + canon bible for cheap re-use.
+      system: cachedSystem(system),
       messages: [{ role: "user", content: user }],
     });
+    console.log(cacheUsageLine("canoncheck", msg.usage));
     const text = (msg.content || []).map((b) => (b.type === "text" ? b.text : "")).join("");
     findings = parseFindings(text);
   } catch (err) {

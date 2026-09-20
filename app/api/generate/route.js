@@ -1,7 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { loadCanon } from "../../../lib/canon.js";
 import { getBook } from "../../../lib/books.js";
-import { effectiveApiKey, effectiveModel, anthropicOptions } from "../../../lib/settings.js";
+import {
+  effectiveApiKey,
+  effectiveModel,
+  anthropicOptions,
+  cachedSystem,
+  cacheUsageLine,
+} from "../../../lib/settings.js";
 import { describeApiError } from "../../../lib/apierror.js";
 
 export const dynamic = "force-dynamic";
@@ -98,10 +104,14 @@ ${WRITING_LAWS}`;
         const s = await client.messages.stream({
           model: await effectiveModel(),
           max_tokens: maxTokens,
-          system,
+          // Cache the (static) system prompt + canon bible for cheap re-use.
+          system: cachedSystem(system),
           messages: [{ role: "user", content: userText }],
         });
         for await (const event of s) {
+          if (event.type === "message_start" && event.message?.usage) {
+            console.log(cacheUsageLine(`generate/${action}`, event.message.usage));
+          }
           if (
             event.type === "content_block_delta" &&
             event.delta?.type === "text_delta"

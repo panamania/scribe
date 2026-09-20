@@ -135,3 +135,12 @@ everything in S3.
   same vars in `.env.local` (see `.env.cloud.example`) and `npm run dev`.
 - **Costs stay low** because Amplify's Next.js compute is pay-per-request and S3
   is pennies at this size. Watch the Anthropic bill, not AWS.
+- **Prompt caching is on.** The co-writer (`/api/generate`) and canon check
+  (`/api/books/[id]/canoncheck`) cache the system prompt + full canon bible, so
+  repeated calls within the cache window pay ~10% of the input-token price for
+  that (large) prefix. Server logs print a `[cache] ...` line per call showing
+  `read`/`write` tokens — a rising `read` count means cache hits are landing.
+- **Bedrock vs Anthropic API:** Bedrock is the *same* per-token price, so it's
+  not a cost win; the caching above is. The code uses `@anthropic-ai/sdk`; if you
+  later want IAM/data-residency, `@anthropic-ai/bedrock-sdk` speaks the same API
+  (including the `cache_control` used here), so the switch is small.
