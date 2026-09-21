@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "AWS region for the bucket and Amplify app."
   type        = string
-  default     = "us-east-1"
+  default     = "ap-southeast-2" # Sydney
 }
 
 variable "app_name" {
   description = "Name for the Amplify app and related resources."
   type        = string
-  default     = "cinderwake-scribe"
+  default     = "scribe"
 }
 
 variable "s3_bucket_name" {

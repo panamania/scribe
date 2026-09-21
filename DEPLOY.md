@@ -1,4 +1,4 @@
-# Deploying Cinderwake Scribe to AWS (Amplify Hosting + S3)
+# Deploying Scribe to AWS (Amplify Hosting + S3)
 
 This is the **cloud-safe** build of the app (the `cloud` git branch). It behaves
 exactly like the local app, but stores your books in **S3** instead of the local
@@ -30,7 +30,7 @@ Your real recurring cost is the **Anthropic API**, not AWS.
 AWS Console → **S3 → Create bucket**:
 
 - Name: e.g. `scribe-sreedhar` (must be globally unique) — note it as `S3_BUCKET`.
-- Region: pick one and remember it (e.g. `us-east-1`) — this is `AWS_REGION`.
+- Region: **`ap-southeast-2` (Sydney)** — this is `AWS_REGION`.
 - **Block all public access: ON** (leave it on — the app reads via credentials, not public URLs).
 - Versioning: **Enable** (cheap insurance — recover an overwritten chapter).
 
@@ -71,7 +71,7 @@ From the app folder on your machine (the `cloud` checkout), with your local
 
 ```bash
 npm install
-S3_BUCKET=scribe-sreedhar AWS_REGION=us-east-1 \
+S3_BUCKET=scribe-sreedhar AWS_REGION=ap-southeast-2 \
 AWS_ACCESS_KEY_ID=AKIA... AWS_SECRET_ACCESS_KEY=... \
 BOOKS_DIR=../books npm run seed:s3
 ```
@@ -92,7 +92,7 @@ AWS Console → **Amplify → Create new app → Deploy with GitHub**:
    |------|-------|
    | `STORAGE` | `s3` |
    | `S3_BUCKET` | `scribe-sreedhar` |
-   | `AWS_REGION` | `us-east-1` |
+   | `AWS_REGION` | `ap-southeast-2` |
    | `AWS_ACCESS_KEY_ID` | *(from step 2)* |
    | `AWS_SECRET_ACCESS_KEY` | *(from step 2)* |
    | `ANTHROPIC_API_KEY` | `sk-ant-...` |

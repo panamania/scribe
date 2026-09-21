@@ -1,6 +1,6 @@
 # Copy to terraform.tfvars and fill in. terraform.tfvars is gitignored (secrets).
 
-aws_region     = "us-east-1"
+aws_region     = "ap-southeast-2" # Sydney
 s3_bucket_name = "scribe-sreedhar-707258693545" # must be globally unique
 
 # GitHub classic PAT with "repo" scope (github.com/settings/tokens).

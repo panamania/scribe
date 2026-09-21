@@ -25,13 +25,13 @@
 
   <!-- Header -->
   <rect x="40" y="30" width="6" height="58" rx="3" fill="#ea8a00"/>
-  <text x="62" y="58" font-size="27" font-weight="800" fill="#0f172a">Cinderwake Scribe — Cloud Architecture</text>
+  <text x="62" y="58" font-size="27" font-weight="800" fill="#0f172a">Scribe — Cloud Architecture</text>
   <text x="62" y="83" font-size="14.5" fill="#64748b">Serverless Next.js on AWS Amplify · manuscripts in Amazon S3 · Claude co-writer with prompt caching</text>
 
   <!-- ===== AWS Cloud container ===== -->
   <rect x="290" y="130" width="770" height="600" rx="18" fill="#ffffff" fill-opacity="0.55" stroke="#ea8a00" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
-  <rect x="312" y="150" width="196" height="30" rx="15" fill="#fff4e5" stroke="#f0b46a"/>
-  <text x="410" y="170" font-size="12.5" font-weight="700" fill="#b8620a" text-anchor="middle">AWS Cloud · us-east-1</text>
+  <rect x="312" y="150" width="230" height="30" rx="15" fill="#fff4e5" stroke="#f0b46a"/>
+  <text x="427" y="170" font-size="12" font-weight="700" fill="#b8620a" text-anchor="middle">AWS Cloud · ap-southeast-2 · Sydney</text>
 
   <!-- ===================== CARDS ===================== -->
   <!-- DNS -->

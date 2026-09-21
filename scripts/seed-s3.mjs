@@ -3,7 +3,7 @@
 //
 // Usage (from the app folder, with AWS creds + region in your environment):
 //
-//   S3_BUCKET=my-scribe-bucket AWS_REGION=us-east-1 \
+//   S3_BUCKET=my-scribe-bucket AWS_REGION=ap-southeast-2 \
 //   BOOKS_DIR=../books npm run seed:s3
 //
 // Flags:
@@ -22,7 +22,7 @@ import {
 } from "@aws-sdk/client-s3";
 
 const BUCKET = process.env.S3_BUCKET;
-const REGION = process.env.AWS_REGION || "us-east-1";
+const REGION = process.env.AWS_REGION || "ap-southeast-2";
 const BOOKS_DIR = path.resolve(process.cwd(), process.env.BOOKS_DIR || "../books");
 const DRY = process.argv.includes("--dry");
 const PRUNE = process.argv.includes("--prune");

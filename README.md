@@ -1,4 +1,4 @@
-# Cinderwake Scribe
+# Scribe
 
 > **You are on the `cloud` branch** — the AWS-ready build (S3 storage, env-based
 > key, single-password login). It still runs locally exactly like `main`. To put
