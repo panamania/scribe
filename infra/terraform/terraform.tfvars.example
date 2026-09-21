@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars and fill in. terraform.tfvars is gitignored (secrets).
+
+aws_region     = "us-east-1"
+s3_bucket_name = "scribe-sreedhar-707258693545" # must be globally unique
+
+# GitHub classic PAT with "repo" scope (github.com/settings/tokens).
+github_access_token = "ghp_xxxxxxxxxxxxxxxxxxxx"
+
+# Anthropic key (console.anthropic.com). Only lives here + in Amplify env.
+anthropic_api_key = "sk-ant-xxxxxxxx"
+
+# Login gate
+site_user     = "sridhar"
+site_password = "choose-a-strong-password"
+
+# Flip to true when ready to attach sreedharpanaman.com (adds DNS records to set)
+enable_domain = false
+# domain_name = "sreedharpanaman.com"
