@@ -1,129 +1,149 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 820" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-start">
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef2f7"/>
+    </linearGradient>
+    <filter id="sh" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.13"/>
+    </filter>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-start">
       <path d="M0 0 L10 5 L0 10 z" fill="#475569"/>
     </marker>
-    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-start">
-      <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
+    <marker id="ap" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-start">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-start">
+      <path d="M0 0 L10 5 L0 10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-start">
+      <path d="M0 0 L10 5 L0 10 z" fill="#ea8a00"/>
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="1000" height="700" fill="#ffffff"/>
-  <text x="24" y="36" font-size="22" font-weight="700" fill="#0f172a">Cinderwake Scribe — AWS Architecture</text>
-  <text x="24" y="58" font-size="13" fill="#64748b">Next.js (SSR) on Amplify Hosting · books in S3 · Anthropic co-writer with prompt caching</text>
+  <rect x="0" y="0" width="1240" height="820" fill="url(#bg)"/>
 
-  <!-- ===================== EXTERNAL ===================== -->
-  <text x="24" y="92" font-size="12" font-weight="700" fill="#94a3b8">EXTERNAL</text>
+  <!-- Header -->
+  <rect x="40" y="30" width="6" height="58" rx="3" fill="#ea8a00"/>
+  <text x="62" y="58" font-size="27" font-weight="800" fill="#0f172a">Cinderwake Scribe — Cloud Architecture</text>
+  <text x="62" y="83" font-size="14.5" fill="#64748b">Serverless Next.js on AWS Amplify · manuscripts in Amazon S3 · Claude co-writer with prompt caching</text>
+
+  <!-- ===== AWS Cloud container ===== -->
+  <rect x="290" y="130" width="770" height="600" rx="18" fill="#ffffff" fill-opacity="0.55" stroke="#ea8a00" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <rect x="312" y="150" width="196" height="30" rx="15" fill="#fff4e5" stroke="#f0b46a"/>
+  <text x="410" y="170" font-size="12.5" font-weight="700" fill="#b8620a" text-anchor="middle">AWS Cloud · us-east-1</text>
+
+  <!-- ===================== CARDS ===================== -->
+  <!-- DNS -->
+  <g filter="url(#sh)"><rect x="40" y="196" width="188" height="72" rx="14" fill="#0ea5e9"/><rect x="46" y="196" width="182" height="72" rx="12" fill="#ffffff"/></g>
+  <text x="137" y="228" font-size="14.5" font-weight="700" fill="#0f172a" text-anchor="middle">Amazon Route 53</text>
+  <text x="137" y="248" font-size="11.5" fill="#64748b" text-anchor="middle">DNS · sreedharpanaman.com</text>
 
   <!-- Browser -->
-  <rect x="24" y="104" width="184" height="70" rx="10" fill="#f8fafc" stroke="#475569"/>
-  <text x="116" y="134" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">Author's Browser</text>
-  <text x="116" y="154" font-size="11" fill="#64748b" text-anchor="middle">HTTPS + Basic-Auth login</text>
+  <g filter="url(#sh)"><rect x="40" y="300" width="188" height="96" rx="14" fill="#334155"/><rect x="46" y="300" width="182" height="96" rx="12" fill="#ffffff"/></g>
+  <text x="137" y="338" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Author's Browser</text>
+  <text x="137" y="360" font-size="11.5" fill="#64748b" text-anchor="middle">HTTPS</text>
+  <text x="137" y="378" font-size="11.5" fill="#64748b" text-anchor="middle">single-password login</text>
 
   <!-- GitHub -->
-  <rect x="24" y="300" width="184" height="70" rx="10" fill="#f8fafc" stroke="#475569"/>
-  <text x="116" y="330" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">GitHub</text>
-  <text x="116" y="350" font-size="11" fill="#64748b" text-anchor="middle">panamania/scribe · cloud</text>
-
-  <!-- Anthropic -->
-  <rect x="24" y="520" width="184" height="80" rx="10" fill="#faf5ff" stroke="#7c3aed"/>
-  <text x="116" y="550" font-size="14" font-weight="600" fill="#5b21b6" text-anchor="middle">Anthropic API</text>
-  <text x="116" y="569" font-size="11" fill="#7c3aed" text-anchor="middle">Claude (Opus/Sonnet/Haiku)</text>
-  <text x="116" y="585" font-size="11" fill="#7c3aed" text-anchor="middle">prompt caching enabled</text>
-
-  <!-- DNS -->
-  <rect x="256" y="112" width="150" height="54" rx="10" fill="#f8fafc" stroke="#475569"/>
-  <text x="331" y="136" font-size="12.5" font-weight="600" fill="#0f172a" text-anchor="middle">DNS (Route 53 /</text>
-  <text x="331" y="153" font-size="12.5" font-weight="600" fill="#0f172a" text-anchor="middle">registrar)</text>
-
-  <!-- ===================== AWS ACCOUNT ===================== -->
-  <rect x="250" y="190" width="726" height="486" rx="14" fill="none" stroke="#ff9900" stroke-width="2" stroke-dasharray="7 5"/>
-  <text x="270" y="214" font-size="13" font-weight="700" fill="#c2410c">AWS ACCOUNT — region: us-east-1</text>
-
-  <!-- Amplify Hosting container -->
-  <rect x="272" y="228" width="682" height="196" rx="12" fill="#fff7ed" stroke="#fb923c"/>
-  <text x="288" y="250" font-size="13" font-weight="700" fill="#c2410c">AWS Amplify Hosting</text>
-
-  <!-- CloudFront -->
-  <rect x="290" y="262" width="210" height="60" rx="9" fill="#eff6ff" stroke="#2563eb"/>
-  <text x="395" y="287" font-size="13" font-weight="600" fill="#1e3a8a" text-anchor="middle">Amazon CloudFront</text>
-  <text x="395" y="305" font-size="11" fill="#3b82f6" text-anchor="middle">global CDN + TLS termination</text>
+  <g filter="url(#sh)"><rect x="40" y="606" width="188" height="90" rx="14" fill="#111827"/><rect x="46" y="606" width="182" height="90" rx="12" fill="#ffffff"/></g>
+  <text x="137" y="642" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">GitHub</text>
+  <text x="137" y="663" font-size="11.5" fill="#64748b" text-anchor="middle">panamania/scribe</text>
+  <text x="137" y="680" font-size="11.5" fill="#64748b" text-anchor="middle">branch: cloud</text>
 
   <!-- ACM -->
-  <rect x="290" y="340" width="210" height="56" rx="9" fill="#eff6ff" stroke="#2563eb"/>
-  <text x="395" y="363" font-size="12.5" font-weight="600" fill="#1e3a8a" text-anchor="middle">AWS Certificate Manager</text>
-  <text x="395" y="381" font-size="11" fill="#3b82f6" text-anchor="middle">managed SSL cert</text>
+  <g filter="url(#sh)"><rect x="330" y="196" width="190" height="70" rx="14" fill="#dc2626"/><rect x="336" y="196" width="184" height="70" rx="12" fill="#ffffff"/></g>
+  <text x="428" y="227" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">Certificate Manager</text>
+  <text x="428" y="247" font-size="11.5" fill="#64748b" text-anchor="middle">managed TLS cert</text>
+
+  <!-- CloudFront -->
+  <g filter="url(#sh)"><rect x="330" y="300" width="190" height="96" rx="14" fill="#2563eb"/><rect x="336" y="300" width="184" height="96" rx="12" fill="#ffffff"/></g>
+  <text x="428" y="338" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Amazon CloudFront</text>
+  <text x="428" y="360" font-size="11.5" fill="#64748b" text-anchor="middle">global CDN</text>
+  <text x="428" y="378" font-size="11.5" fill="#64748b" text-anchor="middle">TLS termination</text>
+
+  <!-- IAM -->
+  <g filter="url(#sh)"><rect x="560" y="196" width="200" height="70" rx="14" fill="#dc2626"/><rect x="566" y="196" width="194" height="70" rx="12" fill="#ffffff"/></g>
+  <text x="663" y="227" font-size="13.5" font-weight="700" fill="#0f172a" text-anchor="middle">IAM Role</text>
+  <text x="663" y="247" font-size="11.5" fill="#64748b" text-anchor="middle">scoped S3 access</text>
 
   <!-- SSR Compute -->
-  <rect x="524" y="262" width="200" height="134" rx="9" fill="#eff6ff" stroke="#2563eb"/>
-  <text x="624" y="286" font-size="13" font-weight="600" fill="#1e3a8a" text-anchor="middle">SSR Compute (Lambda)</text>
-  <text x="624" y="308" font-size="11" fill="#3b82f6" text-anchor="middle">Next.js pages + API routes</text>
-  <text x="624" y="326" font-size="11" fill="#3b82f6" text-anchor="middle">middleware.js → Basic Auth</text>
-  <text x="624" y="350" font-size="11" fill="#3b82f6" text-anchor="middle">/api/generate</text>
-  <text x="624" y="368" font-size="11" fill="#3b82f6" text-anchor="middle">/api/…/canoncheck</text>
-
-  <!-- CI/CD -->
-  <rect x="746" y="262" width="192" height="134" rx="9" fill="#eff6ff" stroke="#2563eb"/>
-  <text x="842" y="290" font-size="13" font-weight="600" fill="#1e3a8a" text-anchor="middle">Amplify CI/CD</text>
-  <text x="842" y="312" font-size="11" fill="#3b82f6" text-anchor="middle">build from `cloud`</text>
-  <text x="842" y="330" font-size="11" fill="#3b82f6" text-anchor="middle">npm ci · next build</text>
-  <text x="842" y="352" font-size="11" fill="#3b82f6" text-anchor="middle">(amplify.yml)</text>
+  <g filter="url(#sh)"><rect x="560" y="300" width="200" height="150" rx="14" fill="#4f46e5"/><rect x="566" y="300" width="194" height="150" rx="12" fill="#ffffff"/></g>
+  <text x="663" y="333" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Amplify SSR Compute</text>
+  <text x="663" y="352" font-size="11.5" fill="#64748b" text-anchor="middle">AWS Lambda · Next.js</text>
+  <line x1="584" y1="364" x2="742" y2="364" stroke="#e2e8f0"/>
+  <text x="663" y="384" font-size="11.5" fill="#334155" text-anchor="middle">middleware → Basic Auth</text>
+  <text x="663" y="404" font-size="11.5" fill="#334155" text-anchor="middle">/api/generate</text>
+  <text x="663" y="422" font-size="11.5" fill="#334155" text-anchor="middle">/api/…/canoncheck</text>
+  <text x="663" y="440" font-size="11.5" fill="#334155" text-anchor="middle">/api/chapters · export</text>
 
   <!-- S3 -->
-  <rect x="290" y="452" width="228" height="92" rx="9" fill="#ecfdf5" stroke="#059669"/>
-  <text x="404" y="480" font-size="13" font-weight="600" fill="#065f46" text-anchor="middle">Amazon S3 (private)</text>
-  <text x="404" y="500" font-size="11" fill="#059669" text-anchor="middle">chapters · canon · covers</text>
-  <text x="404" y="517" font-size="11" fill="#059669" text-anchor="middle">book.json · settings · versioned</text>
-
-  <!-- IAM role -->
-  <rect x="546" y="452" width="180" height="74" rx="9" fill="#fef2f2" stroke="#dc2626"/>
-  <text x="636" y="482" font-size="13" font-weight="600" fill="#991b1b" text-anchor="middle">IAM role</text>
-  <text x="636" y="502" font-size="11" fill="#dc2626" text-anchor="middle">Amplify → S3 access</text>
+  <g filter="url(#sh)"><rect x="800" y="196" width="210" height="112" rx="14" fill="#059669"/><rect x="806" y="196" width="204" height="112" rx="12" fill="#ffffff"/></g>
+  <text x="905" y="230" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Amazon S3 (private)</text>
+  <text x="905" y="252" font-size="11.5" fill="#64748b" text-anchor="middle">chapters · canon · covers</text>
+  <text x="905" y="270" font-size="11.5" fill="#64748b" text-anchor="middle">book.json · settings</text>
+  <text x="905" y="291" font-size="11.5" fill="#64748b" text-anchor="middle">versioned · encrypted</text>
 
   <!-- CloudWatch -->
-  <rect x="752" y="452" width="186" height="74" rx="9" fill="#f1f5f9" stroke="#475569"/>
-  <text x="845" y="482" font-size="13" font-weight="600" fill="#0f172a" text-anchor="middle">CloudWatch Logs</text>
-  <text x="845" y="502" font-size="11" fill="#64748b" text-anchor="middle">[cache] read/write tokens</text>
+  <g filter="url(#sh)"><rect x="800" y="470" width="210" height="86" rx="14" fill="#0891b2"/><rect x="806" y="470" width="204" height="86" rx="12" fill="#ffffff"/></g>
+  <text x="905" y="504" font-size="14.5" font-weight="700" fill="#0f172a" text-anchor="middle">CloudWatch Logs</text>
+  <text x="905" y="526" font-size="11.5" fill="#64748b" text-anchor="middle">[cache] read / write tokens</text>
 
-  <!-- ===================== ARROWS ===================== -->
-  <!-- Browser -> DNS -->
-  <path d="M208 128 L254 132" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
-  <text x="214" y="120" font-size="10.5" fill="#334155">resolve</text>
-  <!-- DNS -> CloudFront -->
-  <path d="M331 166 L360 260" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
-  <!-- Browser -> CloudFront (HTTPS) -->
-  <path d="M208 150 C 360 190, 300 230, 330 260" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arrow)"/>
-  <text x="234" y="205" font-size="10.5" fill="#334155">HTTPS request</text>
+  <!-- Amplify CI/CD -->
+  <g filter="url(#sh)"><rect x="560" y="566" width="200" height="118" rx="14" fill="#ea8a00"/><rect x="566" y="566" width="194" height="118" rx="12" fill="#ffffff"/></g>
+  <text x="663" y="600" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Amplify CI/CD</text>
+  <text x="663" y="622" font-size="11.5" fill="#64748b" text-anchor="middle">webhook on push</text>
+  <text x="663" y="640" font-size="11.5" fill="#64748b" text-anchor="middle">npm ci · next build</text>
+  <text x="663" y="662" font-size="11.5" fill="#64748b" text-anchor="middle">(amplify.yml)</text>
 
+  <!-- Anthropic (external) -->
+  <g filter="url(#sh)"><rect x="1080" y="330" width="150" height="104" rx="14" fill="#7c3aed"/><rect x="1086" y="330" width="144" height="104" rx="12" fill="#ffffff"/></g>
+  <text x="1158" y="366" font-size="14.5" font-weight="700" fill="#5b21b6" text-anchor="middle">Anthropic API</text>
+  <text x="1158" y="387" font-size="11.5" fill="#7c3aed" text-anchor="middle">Claude</text>
+  <text x="1158" y="404" font-size="11.5" fill="#7c3aed" text-anchor="middle">prompt caching</text>
+  <text x="1158" y="421" font-size="11.5" fill="#7c3aed" text-anchor="middle">(~90% cheaper reads)</text>
+
+  <!-- ===================== CONNECTORS ===================== -->
+  <!-- (1) Browser -> Route53 -->
+  <path d="M137 300 L137 272" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#a)"/>
+  <!-- (2) Browser -> CloudFront -->
+  <path d="M228 348 L326 348" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
   <!-- CloudFront -> SSR -->
-  <path d="M500 292 L522 300" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
-  <text x="486" y="284" font-size="10.5" fill="#334155">SSR</text>
+  <path d="M520 348 L556 348" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="538" y="338" font-size="10.5" fill="#64748b" text-anchor="middle">SSR</text>
   <!-- ACM -> CloudFront -->
-  <path d="M395 340 L395 324" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
-  <text x="400" y="336" font-size="10.5" fill="#334155">cert</text>
-
-  <!-- SSR -> S3 -->
-  <path d="M560 396 C 520 430, 470 430, 430 450" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arrow)"/>
-  <text x="452" y="430" font-size="10.5" fill="#334155">read / write</text>
-  <!-- SSR <-> IAM (assumes) -->
-  <path d="M636 452 L632 398" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
-  <text x="640" y="428" font-size="10.5" fill="#b91c1c">assumes role</text>
-
-  <!-- SSR -> Anthropic -->
-  <path d="M524 356 C 320 380, 200 430, 150 518" fill="none" stroke="#7c3aed" stroke-width="1.9" marker-end="url(#arrow)"/>
-  <text x="250" y="452" font-size="10.5" fill="#6d28d9">generate / canon-check (cached)</text>
-
+  <path d="M428 266 L428 296" fill="none" stroke="#dc2626" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="470" y="286" font-size="10.5" fill="#b91c1c" text-anchor="middle">cert</text>
+  <!-- IAM -> SSR -->
+  <path d="M663 266 L663 296" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <text x="663" y="286" font-size="10.5" fill="#b91c1c" text-anchor="middle">assume</text>
+  <!-- (3) SSR -> S3 -->
+  <path d="M760 330 L802 274" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <!-- (4) SSR -> Anthropic -->
+  <path d="M760 378 L1078 381" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#ap)"/>
   <!-- SSR -> CloudWatch -->
-  <path d="M700 396 C 780 420, 820 428, 840 450" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
-  <text x="756" y="424" font-size="10.5" fill="#334155">logs</text>
+  <path d="M706 450 L860 470" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#a)"/>
+  <text x="756" y="466" font-size="10.5" fill="#64748b" text-anchor="middle">logs</text>
+  <!-- (5) GitHub -> CI/CD -->
+  <path d="M228 648 L556 628" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <!-- (6) CI/CD -> SSR (deploy) -->
+  <path d="M663 566 L663 454" fill="none" stroke="#ea8a00" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ao)"/>
 
-  <!-- GitHub -> CI/CD -->
-  <path d="M208 320 C 500 300, 640 300, 744 312" fill="none" stroke="#475569" stroke-width="1.8" marker-end="url(#arrow)"/>
-  <text x="470" y="296" font-size="10.5" fill="#334155">push to cloud → webhook build</text>
-  <!-- CI/CD -> CloudFront/SSR (deploy) -->
-  <path d="M842 396 C 842 420, 700 250, 636 262" fill="none" stroke="#c2410c" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrowO)"/>
-  <text x="700" y="238" font-size="10.5" fill="#c2410c">deploy</text>
+  <!-- ===================== STEP BADGES ===================== -->
+  <g font-size="12.5" font-weight="800" fill="#ffffff" text-anchor="middle">
+    <circle cx="137" cy="286" r="11" fill="#0f172a"/><text x="137" y="290">1</text>
+    <circle cx="284" cy="348" r="11" fill="#0f172a"/><text x="284" y="352">2</text>
+    <circle cx="789" cy="298" r="11" fill="#0f172a"/><text x="789" y="302">3</text>
+    <circle cx="905" cy="381" r="11" fill="#7c3aed"/><text x="905" y="385">4</text>
+    <circle cx="392" cy="638" r="11" fill="#ea8a00"/><text x="392" y="642">5</text>
+    <circle cx="663" cy="510" r="11" fill="#ea8a00"/><text x="663" y="514">6</text>
+  </g>
 
-  <!-- Legend -->
-  <text x="24" y="648" font-size="11" fill="#94a3b8">Data plane: Browser → CloudFront → SSR → S3 / Anthropic.  Build plane (dashed): GitHub → CI/CD → deploy.  IAM (red) grants S3 access.</text>
+  <!-- ===================== LEGEND ===================== -->
+  <line x1="40" y1="744" x2="1200" y2="744" stroke="#e2e8f0"/>
+  <g font-size="12" fill="#475569">
+    <text x="40" y="768" font-weight="700" fill="#0f172a">Request path</text>
+    <text x="40" y="787">1  resolve domain   ·   2  HTTPS → CloudFront → SSR   ·   3  read / write manuscripts in S3   ·   4  co-writer call to Claude (cached)</text>
+    <text x="40" y="806" font-weight="700" fill="#0f172a">Delivery path<tspan font-weight="400" fill="#475569">    5  git push to cloud branch   ·   6  Amplify builds &amp; deploys the SSR app</tspan></text>
+  </g>
 </svg>
