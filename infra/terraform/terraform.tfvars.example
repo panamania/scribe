@@ -13,6 +13,15 @@ anthropic_api_key = "sk-ant-xxxxxxxx"
 site_user     = "sridhar"
 site_password = "choose-a-strong-password"
 
-# Flip to true when ready to attach sreedharpanaman.com (adds DNS records to set)
-enable_domain = false
-# domain_name = "sreedharpanaman.com"
+# Flip to true when ready to attach the custom domain (adds DNS records to set)
+enable_domain    = false
+domain_name      = "sreedharpanaman.com"
+subdomain_prefix = "scribe" # -> scribe.sreedharpanaman.com
+
+# DNS is at GoDaddy. Two ways to connect it — see infra/GODADDY-DNS.md:
+#   manage_dns_in_route53 = true   -> Terraform makes a Route 53 zone; Amplify
+#                                     auto-creates all records (incl. apex). You
+#                                     just repoint GoDaddy nameservers. (cleanest)
+#   manage_dns_in_route53 = false  -> keep DNS at GoDaddy; add records by hand
+#                                     from the `domain_dns_records` output.
+manage_dns_in_route53 = false

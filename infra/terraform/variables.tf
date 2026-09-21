@@ -63,8 +63,20 @@ variable "enable_domain" {
   default     = false
 }
 
+variable "manage_dns_in_route53" {
+  description = "Create a Route 53 hosted zone for the domain. When the zone is in the same account as the Amplify app, Amplify AUTO-creates the validation + routing records (including the apex). You then delegate the domain to the output nameservers at GoDaddy. Leave false to keep DNS at GoDaddy and add records by hand."
+  type        = bool
+  default     = false
+}
+
 variable "domain_name" {
-  description = "Custom domain (apex), e.g. sreedharpanaman.com."
+  description = "Root domain registered at GoDaddy, e.g. sreedharpanaman.com."
   type        = string
   default     = "sreedharpanaman.com"
+}
+
+variable "subdomain_prefix" {
+  description = "Subdomain the app is served on, e.g. \"scribe\" -> scribe.sreedharpanaman.com."
+  type        = string
+  default     = "scribe"
 }

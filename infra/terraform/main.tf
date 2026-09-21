@@ -128,6 +128,17 @@ resource "aws_amplify_branch" "cloud" {
 }
 
 # ---------------------------------------------------------------------------
+# Optional: host the domain's DNS in Route 53. When this hosted zone is in the
+# same AWS account as the Amplify app, Amplify automatically writes the ACM
+# validation + routing records (including the apex ALIAS that GoDaddy can't do)
+# into it. You then point GoDaddy's nameservers at this zone (see outputs).
+# ---------------------------------------------------------------------------
+resource "aws_route53_zone" "primary" {
+  count = var.manage_dns_in_route53 ? 1 : 0
+  name  = var.domain_name
+}
+
+# ---------------------------------------------------------------------------
 # Custom domain (optional). Enable once you're ready to point DNS.
 # Amplify provisions a free ACM cert; you add the DNS records it outputs.
 # ---------------------------------------------------------------------------
@@ -137,14 +148,10 @@ resource "aws_amplify_domain_association" "domain" {
   domain_name           = var.domain_name
   wait_for_verification = false
 
-  # Apex: sreedharpanaman.com
+  # e.g. scribe.sreedharpanaman.com — a subdomain needs only a simple CNAME at
+  # GoDaddy (no apex ALIAS limitation to work around).
   sub_domain {
     branch_name = aws_amplify_branch.cloud.branch_name
-    prefix      = ""
-  }
-  # www.sreedharpanaman.com
-  sub_domain {
-    branch_name = aws_amplify_branch.cloud.branch_name
-    prefix      = "www"
+    prefix      = var.subdomain_prefix
   }
 }
